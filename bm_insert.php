@@ -5,12 +5,8 @@ $url = $_POST["url"];
 $comment = $_POST["comment"];
 
 //2. DB接続します
-try {
-  //ID ;’root',Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=gs_db_bookmark;charset=utf8;host=localhost','root',''); 
-} catch (PDOException $e) {
-  exit('DBConnectError:'.$e->getMessage());
-}
+include("funcs.php");
+$pdo = db_conn();
 
 //３．データ登録SQL作成
 $sql = "INSERT INTO gs_bm_table(title,url,comment,indate)VALUES(:title,:url,:comment,sysdate());"; //直接変数入れると危ない

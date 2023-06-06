@@ -3,12 +3,8 @@
 session_start();
 
 //1.  DB接続します
-try {
-  //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=gs_db_bookmark;charset=utf8;host=localhost','root',''); 
-} catch (PDOException $e) {
-  exit('DBConnectError:'.$e->getMessage());
-}
+include("funcs.php");
+$pdo = db_conn();
 
 //２．データ登録SQL作成
 $sql = "SELECT * FROM gs_bm_table";
