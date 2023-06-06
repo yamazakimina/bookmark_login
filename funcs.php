@@ -6,17 +6,18 @@ function h($str){
 
 //DB接続関数：db_conn()
 function db_conn(){
+//localhost
     try {
         $db_name = "gs_db_bookmark";    //データベース名
         $db_id   = "root";      //アカウント名
         $db_pw   = "";          //パスワード：XAMPPはパスワード無し or MAMPはパスワード”root”に修正してください。
         $db_host = "localhost"; //DBホスト
-
+//さくらサーバー
     if($_SERVER["HTTP_HOST"] != 'localhost'){
-        $db_name = "yamazaki-mina_gs_db_bookmark";
-        $db_id = "yamazaki-mina";
-        $db_pw = "yamazaki_37";
-        $db_host = "mysql57.yamazaki-mina.sakura.ne.jp";
+        $db_name = "yamazaki-mina_gs_db_bookmark"; //データベース名
+        $db_id = "yamazaki-mina"; //ユーザ名
+        $db_pw = "yamazaki_37"; //接続先パスワード
+        $db_host = "mysql57.yamazaki-mina.sakura.ne.jp"; //データベースサーバー
     }
     $pdo = new PDO('mysql:dbname=' . $db_name . ';charset=utf8;host=' . $db_host, $db_id, $db_pw);
         return $pdo;
